@@ -1,0 +1,33 @@
+[package]
+name = "serva"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+
+[lib]
+name = "serva"
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+#ockam = { path = "../ockam/implementations/rust/ockam/ockam" }
+#ockam_transport_uds = { path = "../ockam/implementations/rust/ockam/ockam_transport_uds" }
+ockam = "0.76"
+
+pnet_datalink = "0.31"
+mdns-sd = "*"
+serde = {version = "*", optional = false}
+minicbor = {version ="0.18", optional = false}
+futures-util = "0.3.1"
+flume = "0.10"
+async-trait = "*"
+toml = "*"
+
+[profile.release]
+strip = true
+debug = false
+incremental = false
+lto = true
+opt-level = "z"
+codegen-units = 1
